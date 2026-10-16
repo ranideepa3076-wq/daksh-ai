@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#082c4c"><meta name="description" content="DAKSH AI — हिंदी AI चैट, आवाज़, फोटो और PDF समझने वाला सहायक">
+<link rel="manifest" href="/manifest.webmanifest"><link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
+<title>DAKSH AI — हिंदी AI सहायक</title>
+<style>
+:root{--navy:#082c4c;--blue:#155b85;--gold:#f2c85b;--paper:#f3f7fb;--ink:#17283a;--muted:#64758a;--line:#dce5ee;--green:#147d55}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Devanagari",sans-serif;background:var(--paper);color:var(--ink)}
+header{background:linear-gradient(120deg,#061f38,#0b4267);color:#fff;padding:15px 18px;border-bottom:4px solid var(--gold)}.head{max-width:1100px;margin:auto;display:flex;align-items:center;gap:12px}.logo{width:47px;height:47px;border-radius:14px;background:var(--gold);color:var(--navy);display:grid;place-items:center;font-size:24px;font-weight:900}.brand{font-size:23px;font-weight:850}.tag{font-size:12px;color:#d7e7f5}.spacer{flex:1}.pill{font-size:12px;background:#173f5f;border:1px solid #42627b;border-radius:99px;padding:7px 10px;color:white}
+main{max-width:1100px;margin:22px auto;padding:0 14px;display:grid;grid-template-columns:235px minmax(0,1fr);gap:16px}aside,.chatbox{background:white;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 26px #102b4310}aside{padding:16px;height:fit-content}h2{font-size:16px;margin:0 0 10px}.tool{width:100%;text-align:left;border:1px solid var(--line);background:white;border-radius:10px;padding:10px;margin:4px 0;cursor:pointer;color:var(--ink);font:inherit}.tool:hover{background:#f3f9fd;border-color:#9bbdd4}.subhead{font-size:12px;color:var(--muted);margin:15px 0 7px}.plan{background:#fff8e5;border:1px solid #f2df9c;border-radius:12px;padding:12px;font-size:12px;line-height:1.6}.plan button{margin-top:7px;background:var(--navy);color:#fff;border:0;border-radius:8px;padding:8px 10px;cursor:pointer;font:inherit}.chatbox{min-height:76vh;display:flex;flex-direction:column;overflow:hidden}.welcome{padding:22px 22px 16px;background:linear-gradient(180deg,#f1f8fd,#fff)}.welcome h1{font-size:clamp(22px,3.7vw,31px);margin:0 0 7px;color:var(--navy)}.welcome p{color:var(--muted);margin:0;line-height:1.6}.messages{padding:18px;flex:1;display:flex;flex-direction:column;gap:12px;min-height:230px}.msg{max-width:90%;padding:12px 14px;border-radius:15px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}.bot{align-self:flex-start;background:#eef5fa;border:1px solid #e1edf5}.user{align-self:flex-end;background:var(--navy);color:#fff}.fileinfo{font-size:12px;color:var(--muted);padding:0 16px 8px}.composer{border-top:1px solid var(--line);padding:12px;display:flex;gap:8px;align-items:flex-end;background:#fff}.composer textarea{resize:vertical;min-height:48px;max-height:140px;flex:1;min-width:0;border:1px solid #cbd8e4;border-radius:12px;padding:11px;font:inherit;outline-color:#6b9fc2}.btn{border:0;border-radius:11px;background:var(--navy);color:white;padding:12px 14px;font:inherit;font-weight:700;cursor:pointer}.btn:disabled{opacity:.5;cursor:wait}.btn.secondary{background:#eaf2f8;color:var(--navy);border:1px solid #d6e4ef}.btn.recording{background:#b42318}.attach{display:none}.notice{margin:0 16px 12px;background:#fff8e5;border:1px solid #f2df9c;padding:9px 11px;border-radius:10px;font-size:11px;color:#705b1b}.foot{text-align:center;color:var(--muted);font-size:11px;padding:0 12px 14px}.install{display:none}
+@media(max-width:760px){main{grid-template-columns:1fr;margin:12px auto}.chatbox{min-height:68vh}aside{order:2}.toolgrid{display:grid;grid-template-columns:1fr 1fr;gap:4px}.tool{margin:2px 0;padding:9px;font-size:13px}.msg{max-width:96%}.composer{padding:9px;gap:6px}.btn{padding:11px 10px}.brand{font-size:21px}.pill{display:none}.install{display:inline-block}}
+</style>
+</head>
+<body>
+<header><div class="head"><div class="logo">द</div><div><div class="brand">DAKSH AI</div><div class="tag">आपका अपना हिंदी AI सहायक</div></div><div class="spacer"></div><span class="pill" id="planLabel">फ्री प्लान</span><button class="btn secondary install" id="installBtn">इंस्टॉल</button></div></header>
+<main>
+<aside>
+<h2>हिंदी टूल्स</h2><div class="toolgrid">
+<button class="tool" data-prompt="मेरे लिए एक औपचारिक आवेदन पत्र लिखिए। विषय: ">✍️ आवेदन पत्र</button>
+<button class="tool" data-prompt="इस टेक्स्ट का सरल हिंदी में सारांश बनाइए: ">📘 सारांश</button>
+<button class="tool" data-prompt="इस विषय पर सोशल मीडिया पोस्ट लिखिए: ">📣 सोशल पोस्ट</button>
+<button class="tool" data-prompt="इस टेक्स्ट का हिंदी-अंग्रेज़ी अनुवाद कीजिए: ">🌐 अनुवाद</button>
+<button class="tool" data-prompt="मेरे लिए व्यावहारिक बिज़नेस आइडिया सुझाइए। मेरी रुचि: ">💡 बिज़नेस आइडिया</button>
+<button class="tool" data-prompt="इस विषय पर YouTube स्क्रिप्ट और शीर्षक लिखिए: ">🎬 वीडियो स्क्रिप्ट</button>
+</div>
+<div class="subhead">फोटो और PDF</div>
+<label class="tool" for="fileInput" style="display:block">📎 फोटो/PDF चुनें</label><input class="attach" id="fileInput" type="file" accept="image/*,application/pdf">
+<div id="selectedFile" class="subhead">कोई फाइल नहीं चुनी</div>
+<div class="subhead">प्लान</div><div class="plan"><b>फ्री</b><br>शुरुआती उपयोग और सीमित AI सवाल।<br><button id="premiumBtn">प्रीमियम की जानकारी</button><div id="premiumInfo" hidden>यह डेमो है। भुगतान चालू नहीं है। पहले API खर्च और उपयोग सीमाएँ तय करें, फिर सुरक्षित भुगतान सेवा जोड़ें।</div></div>
+<div class="subhead">ध्यान दें</div><div style="font-size:11px;color:var(--muted);line-height:1.5">आवाज़ की सुविधा ब्राउज़र पर निर्भर है। कुछ ब्राउज़र में माइक्रोफ़ोन और इंटरनेट ज़रूरी हैं।</div>
+</aside>
+<section class="chatbox">
+<div class="welcome"><h1>नमस्ते! मैं DAKSH AI हूँ।</h1><p>हिंदी में सवाल लिखें या आवाज़ से बोलें। फोटो या PDF चुनकर उसके बारे में पूछें।</p></div>
+<div class="messages" id="messages" aria-live="polite"><div class="msg bot">नमस्कार! आज मैं आपकी क्या मदद कर सकता हूँ?</div></div>
+<div class="fileinfo" id="fileInfo"></div>
+<div class="notice">AI के जवाब गलत हो सकते हैं। संवेदनशील निजी दस्तावेज़ अपलोड न करें। यह शुरुआती संस्करण है, इसमें भुगतान सक्रिय नहीं है।</div>
+<form class="composer" id="form"><button class="btn secondary" id="micBtn" type="button" title="आवाज़ से बोलें">🎙️</button><textarea id="prompt" placeholder="अपना सवाल यहाँ लिखें..." rows="2" required></textarea><button class="btn" id="send" type="submit">भेजें ↑</button></form>
+<div class="foot">DAKSH AI स्वतंत्र प्रोजेक्ट है; यह OpenAI/ChatGPT की आधिकारिक सेवा नहीं है।</div>
+</section></main>
+<script>
+const form=document.querySelector('#form'), promptBox=document.querySelector('#prompt'), messages=document.querySelector('#messages'), send=document.querySelector('#send'), fileInput=document.querySelector('#fileInput'), fileInfo=document.querySelector('#fileInfo'), selectedFile=document.querySelector('#selectedFile');
+let chosenFile=null;
+function add(text,who){const d=document.createElement('div');d.className='msg '+who;d.textContent=text;messages.appendChild(d);d.scrollIntoView({behavior:'smooth',block:'nearest'});return d}
+document.querySelectorAll('[data-prompt]').forEach(b=>b.addEventListener('click',()=>{promptBox.value=b.dataset.prompt;promptBox.focus()}));
+fileInput.addEventListener('change',()=>{chosenFile=fileInput.files[0]||null;if(chosenFile && chosenFile.size>10*1024*1024){alert('इस डेमो में 10 MB से छोटी फाइल चुनें।');chosenFile=null;fileInput.value=''}selectedFile.textContent=chosenFile?('चुनी गई: '+chosenFile.name):'कोई फाइल नहीं चुनी';});
+document.querySelector('#premiumBtn').addEventListener('click',()=>{const x=document.querySelector('#premiumInfo');x.hidden=!x.hidden});
+form.addEventListener('submit',async e=>{e.preventDefault();const message=promptBox.value.trim();if(!message&&!chosenFile)return;add((message||'इस फाइल को समझाइए')+(chosenFile?'\n📎 '+chosenFile.name:''),'user');promptBox.value='';send.disabled=true;send.textContent='सोच रहा हूँ…';const pending=add('जवाब तैयार हो रहा है…','bot');
+try{const body={message:message||'इस फाइल का वर्णन और सारांश हिंदी में दीजिए।'};if(chosenFile){body.fileName=chosenFile.name;body.mimeType=chosenFile.type||'application/octet-stream';body.fileData=await toBase64(chosenFile)}const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await res.json();if(!res.ok)throw new Error(data.error||'AI जवाब नहीं मिला');pending.textContent=data.reply||'जवाब खाली आया।'}catch(err){pending.textContent='AI कनेक्शन में समस्या: '+err.message+'\nAPI key और मॉडल सेटिंग जाँचें।'}finally{send.disabled=false;send.textContent='भेजें ↑';chosenFile=null;fileInput.value='';selectedFile.textContent='कोई फाइल नहीं चुनी';fileInfo.textContent='';promptBox.focus()}});
+function toBase64(file){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(String(r.result).split(',')[1]);r.onerror=reject;r.readAsDataURL(file)})}
+const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;const mic=document.querySelector('#micBtn');
+if(!SpeechRecognition){mic.title='इस ब्राउज़र में आवाज़ से लिखना समर्थित नहीं है';mic.addEventListener('click',()=>alert('आवाज़ से लिखने के लिए Android पर Chrome या समर्थित ब्राउज़र आज़माएँ।'))}
+else{mic.addEventListener('click',()=>{const rec=new SpeechRecognition();rec.lang='hi-IN';rec.interimResults=false;rec.maxAlternatives=1;mic.classList.add('recording');mic.textContent='⏺️';rec.onresult=e=>{promptBox.value+=(promptBox.value?' ':'')+e.results[0][0].transcript;promptBox.focus()};rec.onerror=()=>alert('माइक्रोफ़ोन अनुमति और इंटरनेट कनेक्शन जाँचें।');rec.onend=()=>{mic.classList.remove('recording');mic.textContent='🎙️'};try{rec.start()}catch(e){mic.classList.remove('recording');mic.textContent='🎙️'}})}
+let installPrompt=null;const installBtn=document.querySelector('#installBtn');window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;installBtn.style.display='inline-block'});installBtn.addEventListener('click',async()=>{if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null}else alert('ब्राउज़र मेन्यू खोलकर “Add to Home Screen” या “Install app” चुनें।')});
+if('serviceWorker' in navigator && location.protocol.startsWith('http'))navigator.serviceWorker.register('/sw.js').catch(()=>{});
+</script>
+</body></html>
